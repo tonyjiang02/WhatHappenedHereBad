@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GroundTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://sprites/other sprites/orchard background.png" type="Texture" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 639.701, 361.603 )
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 393205, 12, 0, 393206, 12, 0, 393207, 12, 0, 393208, 12, 0, 393209, 12, 0, 393210, 12, 0, 393211, 12, 0, 393212, 12, 0, 393213, 12, 0, 393214, 12, 0, 393215, 12, 0, 327680, 12, 0, 327681, 12, 0, 327682, 12, 0, 327683, 12, 0, 327684, 12, 0, 327685, 12, 0, 327686, 12, 0, 327687, 12, 0, 327688, 12, 0, 327689, 12, 0, 327690, 12, 0 )
+
+[node name="orchard background" type="Sprite" parent="."]
+position = Vector2( 640, 352.802 )
+scale = Vector2( 1, 0.975551 )
+texture = ExtResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 48, 608 )
