@@ -43,9 +43,9 @@ margin_bottom = 696.0
 
 [node name="DialogueBox" type="RichTextLabel" parent="."]
 margin_left = 328.0
-margin_top = 118.0
+margin_top = 119.149
 margin_right = 997.0
-margin_bottom = 331.0
+margin_bottom = 332.149
 custom_fonts/normal_font = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
