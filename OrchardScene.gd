@@ -5,11 +5,20 @@ extends Node2D
 # var b = "text"
 var nextToProtester = false
 var nextToEntrance = false
-
+var file = File.new()
+var dict
+var dialogue_counter = 1
+var talkingToMan = false
+var acceptInput = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if global.pos2:
 		$Player.position = global.pos2
+	file.open("res://textfiles/OutsideOrchardDialogue.json", file.READ)
+	var text = file.get_as_text()
+	var result = JSON.parse(text)
+	dict = result.result
+	file.close()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -17,6 +26,21 @@ func _ready():
 func _process(delta):
 	_get_message()
 	global.pos2 = $Player.position
+	
+func _display_next_dialogue():
+	if dict.has(str(dialogue_counter)):
+		$DialogueBox.clear()
+		$DialogueBox.show()
+		var display_text = dict[str(dialogue_counter)].content
+		var speaker = dict[str(dialogue_counter)].name
+		$DialogueBox.add_text(speaker + " : " + display_text)
+		dialogue_counter+=1
+	else:
+		dialogue_counter = 1
+		$DialogueBox.hide()
+		$DialogueBox.clear()
+		talkingToMan = false
+		
 func _get_message():
 	var distanceToProtester = $Sprite.position.distance_to($Player.position)
 	var distanceToEntrance = $Position2D.position.distance_to($Player.position)
@@ -31,5 +55,15 @@ func _get_message():
 	else:
 		$Label.text = ""
 func _input(e):
-	if Input.is_key_pressed(KEY_F):
-		pass
+	if acceptInput:
+		if Input.is_key_pressed(KEY_F):
+			if nextToProtester:
+				_display_next_dialogue()
+			elif nextToEntrance:
+				pass
+		if $Timer.is_stopped():
+			$Timer.start()
+			acceptInput = false
+	
+func _on_Timer_timeout():
+	acceptInput = true
