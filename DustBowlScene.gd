@@ -12,6 +12,8 @@ var file = File.new()
 var dict = {}
 var dialogue_counter = 1
 var acceptInput = true
+
+
 func _ready():
 	if global.pos1:
 		$Player.position = global.pos1

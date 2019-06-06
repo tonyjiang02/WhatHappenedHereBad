@@ -5,6 +5,13 @@ var pos1
 var pos2
 # position in ...
 var pos3
+
+var time = 0.0
+
+var timeOrch = 0.0
+
 func _ready():
 	pass 
+	
+
 
