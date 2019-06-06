@@ -24,6 +24,9 @@ func _ready():
 func _process(delta):
 	_get_Message()
 	global.pos1 = $Player.position
+	if $Player.position.distance_to($Position2D.position) < 50:
+		print("closeto")
+		get_tree().change_scene("res://OrchardScene.tscn")
 func _input(e):
 	if acceptInput:
 		if Input.is_key_pressed(KEY_F):

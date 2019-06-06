@@ -47,3 +47,10 @@ margin_top = 251.408
 margin_right = 894.836
 margin_bottom = 464.408
 custom_fonts/normal_font = SubResource( 1 )
+<<<<<<< HEAD
+=======
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 1271.68, 527.865 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+>>>>>>> c813d6fc2f67efdbd86b3c3d7171f514660c09dc
