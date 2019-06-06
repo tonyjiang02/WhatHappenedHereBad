@@ -11,7 +11,7 @@ var talkingToPicker = false
 var file = File.new()
 var dict = {}
 var dialogue_counter = 1
-var ignoreinputs = false
+var acceptInput = true
 func _ready():
 	if global.pos1:
 		$Player.position = global.pos1
@@ -25,19 +25,19 @@ func _process(delta):
 	_get_Message()
 	global.pos1 = $Player.position
 func _input(e):
-	if !ignoreinputs:
-		$Timer.start()
-	if Input.is_key_pressed(KEY_F):
-		if(!ignoreinputs):
+	if acceptInput:
+		if Input.is_key_pressed(KEY_F):
 			if nextToPicker:
 				emit_signal("talk_picker")
 				print("talk_picker")
 				_display_next_dialogue()
 				talkingToPicker = true
-	if Input.is_key_pressed(KEY_C) and !ignoreinputs:
-		if talkingToPicker:
-			_display_next_dialogue()
-	# ignoreinputs = true
+		if Input.is_key_pressed(KEY_C):
+			if talkingToPicker:
+				_display_next_dialogue()
+		if $Timer.is_stopped():
+			acceptInput = false
+			$Timer.start()
 func _get_Message():
 	var distanceToPicker = $OrchardPicker.position.distance_to($Player.position)
 	if (distanceToPicker < 100):
@@ -59,5 +59,6 @@ func _display_next_dialogue():
 		talkingToPicker = false
 		
 
+
 func _on_Timer_timeout():
-	ignoreinputs = false
+	acceptInput = true

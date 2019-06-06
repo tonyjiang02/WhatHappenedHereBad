@@ -12,6 +12,8 @@ var talkingToMan = false
 var acceptInput = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$DialogueBox.hide()
+	$"Textbox Texture".hide()
 	if global.pos2:
 		$Player.position = global.pos2
 	file.open("res://textfiles/OutsideOrchardDialogue.json", file.READ)
@@ -31,6 +33,7 @@ func _display_next_dialogue():
 	if dict.has(str(dialogue_counter)):
 		$DialogueBox.clear()
 		$DialogueBox.show()
+		$"Textbox Texture".show()
 		var display_text = dict[str(dialogue_counter)].content
 		var speaker = dict[str(dialogue_counter)].name
 		$DialogueBox.add_text(speaker + " : " + display_text)
@@ -39,6 +42,7 @@ func _display_next_dialogue():
 		dialogue_counter = 1
 		$DialogueBox.hide()
 		$DialogueBox.clear()
+		$"Textbox Texture".hide()
 		talkingToMan = false
 		
 func _get_message():

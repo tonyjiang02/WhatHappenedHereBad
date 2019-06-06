@@ -21,19 +21,22 @@ format = 1
 tile_data = PoolIntArray( 720895, 12, 0, 655360, 12, 0, 655361, 12, 0, 655362, 12, 0, 655363, 12, 0, 655364, 12, 0, 655365, 12, 0, 655366, 12, 0, 655367, 12, 0, 655368, 12, 0, 655369, 12, 0, 655370, 12, 0, 655371, 12, 0, 655372, 12, 0, 655373, 12, 0, 655374, 12, 0, 655375, 12, 0, 655376, 12, 0, 655377, 12, 0, 655378, 12, 0, 655379, 12, 0, 655380, 12, 0, 786431, 12, 0, 720896, 12, 0, 720897, 12, 0, 720898, 12, 0, 720899, 12, 0, 720900, 12, 0, 720901, 12, 0, 720902, 12, 0, 720903, 12, 0, 720904, 12, 0, 720905, 12, 0, 720906, 12, 0, 720907, 12, 0, 720908, 12, 0, 720909, 12, 0, 720910, 12, 0, 720911, 12, 0, 720912, 12, 0, 720913, 12, 0, 720914, 12, 0, 720915, 12, 0, 720916, 12, 0 )
 
 [node name="Inorchard" type="Sprite" parent="."]
-position = Vector2( 638.851, 358.851 )
+position = Vector2( 638.851, 360.169 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="OrchardPicker" type="Sprite" parent="."]
-position = Vector2( 692.602, 558.217 )
-scale = Vector2( 3.8814, 3.8814 )
+position = Vector2( 682.059, 539.767 )
+scale = Vector2( 3.01657, 3.01657 )
 texture = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 35.3374, 555.671 )
+position = Vector2( 55.105, 549.082 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
 
 [node name="Label" type="Label" parent="."]
 margin_left = 661.297
@@ -47,3 +50,4 @@ margin_top = 251.408
 margin_right = 894.836
 margin_bottom = 464.408
 custom_fonts/normal_font = SubResource( 1 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
