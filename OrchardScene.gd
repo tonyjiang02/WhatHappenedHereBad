@@ -64,7 +64,7 @@ func _input(e):
 			if nextToProtester:
 				_display_next_dialogue()
 			elif nextToEntrance:
-				pass
+				get_tree().change_scene("res://InsideOrchard.tscn")
 		if $Timer.is_stopped():
 			$Timer.start()
 			acceptInput = false
